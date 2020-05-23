@@ -1,16 +1,14 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
-
 @Component({
-  selector: 'app-shots-dialog',
-  templateUrl: './shots-dialog.component.html',
-  styleUrls: ['./shots-dialog.component.scss']
+  selector: 'app-number-dialog',
+  templateUrl: './number-dialog.component.html',
+  styleUrls: ['./number-dialog.component.scss']
 })
-export class ShotsDialogComponent {
-
+export class NumberDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<ShotsDialogComponent>,
+    public dialogRef: MatDialogRef<NumberDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: number) {
   }
 

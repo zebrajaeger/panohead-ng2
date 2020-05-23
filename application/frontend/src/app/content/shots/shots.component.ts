@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {ShotsDialogComponent} from './shots-dialog.component';
+import {Component} from '@angular/core';
+import {UiService} from '../../ui/ui.service';
 
 export interface Shot {
   focusTimeS: number;
@@ -12,7 +11,7 @@ export interface Shot {
   templateUrl: './shots.component.html',
   styleUrls: ['./shots.component.scss']
 })
-export class ShotsComponent implements OnInit {
+export class ShotsComponent {
 
   displayedColumns: string[] = ['focusTimeS', 'triggerTimeS', 'moveUp', 'moveDown'];
   // shots = new Array<Shot>();+
@@ -25,23 +24,11 @@ export class ShotsComponent implements OnInit {
     {focusTimeS: 5.1, triggerTimeS: 2.5}
   ];
 
-  constructor(public dialog: MatDialog) {
-  }
-
-  ngOnInit(): void {
+  constructor(private uiService: UiService) {
   }
 
   editCell(shot: Shot, column: string) {
-    const dialogRef = this.dialog.open(ShotsDialogComponent, {
-      width: '250px',
-      data: shot[column]
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (!isNaN(result)) {
-        shot[column] = result;
-      }
-    });
+    this.uiService.editNumber(shot[column]).then(value => shot[column] = value);
   }
 
   isNotLastRow(i: number) {
