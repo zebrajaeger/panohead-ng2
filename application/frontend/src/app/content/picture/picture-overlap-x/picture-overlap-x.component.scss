@@ -1,0 +1,16 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 6px;
+  padding: 5px 16px;
+
+  &.save {
+    position: absolute;
+    bottom: 0px;
+    border-radius: 0;
+    width: calc(100% - 32px);
+    justify-content: flex-end;
+  }
+}
+
